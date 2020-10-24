@@ -27,7 +27,7 @@ func main() {
 
 	imagesListOut, err := imagesListCmd.Output()
 	if err != nil {
-			panic(err)
+		panic(err)
 	}
 
 	imagesList := string(imagesListOut)
