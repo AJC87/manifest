@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 )
 
 func checkArguments() {
@@ -21,4 +22,15 @@ func main() {
 
 	fmt.Println("Welcome to manifest!");
 	fmt.Println("Selected environment is: " + environment);
+
+	imagesListCmd := exec.Command("bash", "-c", "gcloud container images list")
+
+	imagesListOut, err := imagesListCmd.Output()
+	if err != nil {
+			panic(err)
+	}
+
+	imagesList := string(imagesListOut)
+
+	fmt.Println(imagesList);
 }
